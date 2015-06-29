@@ -1,0 +1,86 @@
+{
+  "name": "bpteam/php-proxy-list",
+  "description": "tiny and slow ;) php classes for work with Proxy list",
+  "minimum-stability": "dev",
+  "authors": [
+    {
+      "name": "Evgeny Pynykh",
+      "email": "bpteam22@gmail.com",
+      "homepage": "http://bpteam.net",
+      "role": "Developer"
+    }
+  ],
+  "require-dev": {
+    "codeclimate/php-test-reporter": "dev-master"
+  },
+  "require": {
+    "php": ">=5.6",
+    "bpteam/file": "master",
+    "bpteam/list": "master",
+    "bpteam/dry-text": "master",
+    "bpteam/cookie": "master",
+    "bpteam/user-agent-switcher": "master",
+    "bpteam/php-shell": "master",
+    "pwfisher/command-line-php": "master",
+    "bpteam/php-phantomjs": "master",
+    "bpteam/header-http": "master",
+    "bpteam/php-curl": "master",
+    "bpteam/php-simple-http": "master",
+    "bpteam/loader": "master"
+  },
+  "repositories":[
+    {
+      "type": "vcs",
+      "url": "https://github.com/bpteam/file"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/bpteam/dry-text"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/bpteam/list"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/bpteam/CommandLine.php"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/bpteam/cookie"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/bpteam/php-shell"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/bpteam/user-agent-switcher"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/bpteam/php-phantomjs"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/bpteam/header-http"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/bpteam/php-curl"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/bpteam/php-simple-http"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/bpteam/loader"
+    }
+  ],
+  "autoload" : {
+    "psr-4": {
+      "bpteam\\ProxyList\\": ""
+    }
+  }
+}
