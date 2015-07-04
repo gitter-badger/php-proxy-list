@@ -53,7 +53,7 @@ class Proxy extends JsonList {
     }
 
     function __construct($path = NULL){
-        parent::__construct($path);
+        parent::__construct($path?:(__DIR__ . '/proxy_list'));
     }
 
     /**
@@ -92,7 +92,7 @@ class Proxy extends JsonList {
      * @param string $proxy
      * @param array  $properties self::_proxyFunction
      */
-    public function add($proxy, $properties = array()){
+    public function add($proxy, $properties = []){
         $this->write( ['proxy' => $proxy], $proxy, 'content');
         foreach($this->getProxyFunction() as $function){
             $this->write(isset($properties[$function]) ? $properties[$function] : null, $function, $proxy);
@@ -102,9 +102,9 @@ class Proxy extends JsonList {
     public function get($key = false, $url = false){
         if(!$key && !$url) {
             $proxy = $this->getNextRecord('content');
-            return is_array($proxy) ? $proxy : false;
+            return is_array($proxy) ? $proxy : NULL;
         }
-        return false;
+        return NULL;
     }
 
     public function shuffleProxyList(){

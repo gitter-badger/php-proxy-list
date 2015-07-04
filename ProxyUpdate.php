@@ -169,7 +169,7 @@ class ProxyUpdate extends Proxy {
     }
 
     public function downloadAllProxy() {
-        $proxy['content'] = array();
+        $proxy['content'] = [];
         foreach (glob($this->getSourceDir() . '/*.' . $this->sourceExt) as $fileSource) {
             $this->loadList($proxy, file_get_contents($fileSource));
         }
@@ -183,7 +183,7 @@ class ProxyUpdate extends Proxy {
     }
 
     public function downloadArchiveProxy(){
-        $proxy['content'] = array();
+        $proxy['content'] = [];
         $this->loadList($proxy, file_get_contents($this->getFileNameSourceList($this->archiveProxy)));
         return $proxy;
     }
@@ -192,11 +192,11 @@ class ProxyUpdate extends Proxy {
         return file_put_contents($this->getSourceDir() . '/' . $name . '.' . $this->sourceExt, implode("\n", $proxy));
     }
 
-    public function getProxyByFunction($proxyList, $function = array()) {
+    public function getProxyByFunction($proxyList, $function = []) {
         if (!is_array($proxyList)){
             return false;
         }
-        $goodProxy = array();
+        $goodProxy = [];
         foreach ($proxyList as $challenger) {
             if($this->checkProxyFunctions($challenger, $function)){
                 $goodProxy[] = $challenger;
@@ -224,17 +224,17 @@ class ProxyUpdate extends Proxy {
     protected function checkProxyFunctions($proxyFunctions, $needFunctions){
         foreach($needFunctions as $name => $value){
             switch(true){
-                case in_array( $name, array('anonym','referer','post','get','cookie')):
+                case in_array( $name, ['anonym','referer','post','get','cookie']):
                     if($proxyFunctions[$name] != $value){
                         return false;
                     }
                     continue;
-                case in_array($name, array('starttransfer')):
+                case in_array($name, ['starttransfer']):
                     if($proxyFunctions[$name] > $value){
                         return false;
                     }
                     continue;
-                case in_array( $name, array('country')):
+                case in_array( $name, ['country']):
                     if($value){
                         if((is_array($value) && !in_array( $proxyFunctions[$name], $value))
                             || (is_string($value) && $proxyFunctions[$name] != $value)){
@@ -242,7 +242,7 @@ class ProxyUpdate extends Proxy {
                         }
                     }
                     continue;
-                case in_array( $name, array('last_check', 'upload_speed', 'download_speed')):
+                case in_array( $name, ['last_check', 'upload_speed', 'download_speed']):
                     if($proxyFunctions[$name] < $value){
                         return false;
                     }
@@ -259,7 +259,7 @@ class ProxyUpdate extends Proxy {
 
     protected function checkProxyArray($arrayProxy, $chunk = 150) {
         if (is_array($arrayProxy)) {
-            $goodProxy = array();
+            $goodProxy = [];
             $url = $this->getFunctionUrl() . '?ip=' . $this->getServerIp() . '&proxy=yandex';
             $this->loader->setCountStream(1);
             $this->loader->setMinSizeAnswer(5);
@@ -270,8 +270,8 @@ class ProxyUpdate extends Proxy {
             $this->loader->setDefaultOption(CURLOPT_POSTFIELDS, "proxy=yandex");
             foreach (array_chunk($arrayProxy, $chunk) as $challenger) {
                 $this->loader->setCountCurl(count($challenger));
-                $urlList = array();
-                $descriptorArray =& $this->_curl->getDescriptorArray();
+                $urlList = [];
+                $descriptorArray =& $this->loader->getDescriptorArray();
                 foreach ($descriptorArray as $key => &$descriptor) {
                     $this->loader->setOption($descriptor, CURLOPT_PROXY, $challenger[$key]['proxy']);
                     $urlList[] = $url;
@@ -292,8 +292,8 @@ class ProxyUpdate extends Proxy {
     }
 
     protected function checkProxyArrayToSite($arrayProxy, $url, $checkWord, $chunk = 100) {
-        if (!is_array($arrayProxy)) return array();
-        $goodProxy = array();
+        if (!is_array($arrayProxy)) return [];
+        $goodProxy = [];
         $this->loader->setCountStream(1);
         $this->loader->setTypeContent('text');
         $this->loader->setDefaultOption(CURLOPT_POST, false);
@@ -302,7 +302,7 @@ class ProxyUpdate extends Proxy {
         foreach (array_chunk($arrayProxy, $chunk) as $challenger) {
             $this->loader->setCountCurl(count($challenger));
             $descriptorArray =& $this->loader->getDescriptorArray();
-            $urlList = array();
+            $urlList = [];
             foreach ($descriptorArray as $key => &$descriptor) {
                 $this->loader->setOption($descriptor, CURLOPT_PROXY, $challenger[$key]['proxy']);
                 $urlList[] = $url;
@@ -321,7 +321,7 @@ class ProxyUpdate extends Proxy {
                 }
             }
         }
-        return count($goodProxy) ? $goodProxy : array();
+        return count($goodProxy) ? $goodProxy : [];
     }
 
     /**
@@ -340,7 +340,7 @@ class ProxyUpdate extends Proxy {
         if (!$ip) {
             $answer = file_get_contents($this->getUrlCheckServerIp());
             $ip = DryPath::getIp($answer);
-            if (!$ip[0]) exit('NO SERVER IP');
+            if (!isset($ip[0]) || !$ip[0]) exit('NO SERVER IP');
             $this->setServerIp($ip[0]);
         } else {
             $this->serverIp = $ip;

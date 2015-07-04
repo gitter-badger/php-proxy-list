@@ -15,31 +15,31 @@
   },
   "require": {
     "php": ">=5.6",
-    "bpteam/file": "master",
-    "bpteam/list": "master",
-    "bpteam/dry-text": "master",
-    "bpteam/cookie": "master",
-    "bpteam/user-agent-switcher": "master",
+    "bpteam/php-file": "master",
+    "bpteam/php-list": "master",
+    "bpteam/php-dry-text": "master",
+    "bpteam/php-cookie": "master",
+    "bpteam/php-user-agent-switcher": "master",
     "bpteam/php-shell": "master",
     "pwfisher/command-line-php": "master",
     "bpteam/php-phantomjs": "master",
-    "bpteam/header-http": "master",
+    "bpteam/php-header-http": "master",
     "bpteam/php-curl": "master",
     "bpteam/php-simple-http": "master",
-    "bpteam/loader": "master"
+    "bpteam/php-loader": "master"
   },
   "repositories":[
     {
       "type": "vcs",
-      "url": "https://github.com/bpteam/file"
+      "url": "https://github.com/bpteam/php-file"
     },
     {
       "type": "vcs",
-      "url": "https://github.com/bpteam/dry-text"
+      "url": "https://github.com/bpteam/php-dry-text"
     },
     {
       "type": "vcs",
-      "url": "https://github.com/bpteam/list"
+      "url": "https://github.com/bpteam/php-list"
     },
     {
       "type": "vcs",
@@ -47,7 +47,7 @@
     },
     {
       "type": "vcs",
-      "url": "https://github.com/bpteam/cookie"
+      "url": "https://github.com/bpteam/php-cookie"
     },
     {
       "type": "vcs",
@@ -55,7 +55,7 @@
     },
     {
       "type": "vcs",
-      "url": "https://github.com/bpteam/user-agent-switcher"
+      "url": "https://github.com/bpteam/php-user-agent-switcher"
     },
     {
       "type": "vcs",
@@ -63,7 +63,7 @@
     },
     {
       "type": "vcs",
-      "url": "https://github.com/bpteam/header-http"
+      "url": "https://github.com/bpteam/php-header-http"
     },
     {
       "type": "vcs",
@@ -75,7 +75,7 @@
     },
     {
       "type": "vcs",
-      "url": "https://github.com/bpteam/loader"
+      "url": "https://github.com/bpteam/php-loader"
     }
   ],
   "autoload" : {
